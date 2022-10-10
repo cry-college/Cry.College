@@ -124,7 +124,7 @@ class FieldElement:
         )
 
     @input_to_element
-    def __rdiv__(self, other):
+    def __truediv__(self, other):
         return FieldElement(
             self.field,
             self.field.div(other.elem, self.elem)
@@ -215,3 +215,9 @@ def test_pow(fp_seven):
     # Element multiplied by its inverse is one
     assert three * three**-1 == 1
     assert three**3 == F(27)
+
+def test_div(fp_seven):
+    F, three, four = fp_seven
+    assert three/three == 1
+    # Element multiplied by its inverse is one
+    assert three/four == 6
