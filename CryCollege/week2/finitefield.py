@@ -127,7 +127,7 @@ class FieldElement:
     def __truediv__(self, other):
         return FieldElement(
             self.field,
-            self.field.div(other.elem, self.elem)
+            self.field.div(self.elem, other.elem)
         )
 
     def __rmul__(self, other):
@@ -145,7 +145,7 @@ class FieldElement:
             self.field,
             self.field.pow(self.elem, power)
         )
-    
+
     def to_bytes(self, lenght, byteorder):
         return self.elem.to_bytes(lenght, byteorder)
 
@@ -220,4 +220,6 @@ def test_div(fp_seven):
     F, three, four = fp_seven
     assert three/three == 1
     # Element multiplied by its inverse is one
-    assert three/four == 6
+    assert three/5 == 2
+    assert F(5)/three == 4
+
