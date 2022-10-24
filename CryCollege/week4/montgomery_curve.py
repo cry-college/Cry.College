@@ -16,6 +16,8 @@ class MontgommeryCurve(EllipticCurve):
             raise ValueError("Parameters do not form a montgommery basic_curves")
 
     def is_on_curve(self, P):
+        if P is self.poif:
+            return True
         return self.B * P.y ** 2 == (P.x ** 3 + self.A * P.x ** 2 + P.x)
 
     def add(self, P, Q):
@@ -67,8 +69,8 @@ def test_curve25519():
 
 
     assert (Curve25519.is_on_curve(G))
+    assert (G.order * G) == Curve25519.poif
     assert ((G.order + 1) * G == G)
-    print(G, N)
-    print(G.order * G)
+    assert (((G.order) * G) + G == G)
 
 test_curve25519()
