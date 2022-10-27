@@ -106,8 +106,8 @@ class X25519:
     def compute_shared(self, pk):
         """
         Compute the shared point with the provided public key
-        :param pk: public key as XZPoint
-        :return: shared secret as XZPoint
+        :param pk: public key as affine point (X value)
+        :return: shared secret as affine point (X value)
         """
         raise NotImplementedError("TODO: Implement me plx")
 
