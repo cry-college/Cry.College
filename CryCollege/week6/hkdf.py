@@ -20,9 +20,9 @@ def hkdf_expand(prk, info, length, hashfunc=BLAKE2s):
 
 
 def hkdf(ikm, salt, info, output_length, hashfunc=BLAKE2s):
-    prk = hkdf_extract(salt, ikm)
+    prk = hkdf_extract(salt, ikm, hashfunc)
     print("prk: ", prk)
-    return hkdf_expand(prk, info, output_length)
+    return hkdf_expand(prk, info, output_length, hashfunc)
 
 
 def test_hkdf():
