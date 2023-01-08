@@ -100,14 +100,19 @@ class BLAKE2s:
     digest_size = DEFAULT_DIGEST_LENGTH
     name = "blake2s"
 
-    def __init__(self, data=b"", key=b'', salt=0, personalization=0):
+    def __init__(self, data=b"", key=b'', digest_size=DEFAULT_DIGEST_LENGTH, salt=0, personalization=0):
         if len(key) > BLOCK_LENGTH:
             raise ValueError("Maximum key length is {BLOCK_LENGTH}.")
+
+        if not 1 <= digest_size <= 32:
+            raise ValueError('Digest size must be greater or equal to 1 and less or equal to 32.')
+
+        self.digest_size = digest_size
 
         # Parameters as bytes string, needed for initial XOR
         self.parameter_block = struct.pack(
             STRUCT_PARAMETER_BLOCK,
-            DIGEST_SIZE,
+            self.digest_size,
             len(key),
             FANOUT,
             DEPTH,
@@ -168,11 +173,11 @@ class BLAKE2s:
 
         return digest
 
-    def digest(self, n_bytes=DEFAULT_DIGEST_LENGTH):
-        return self._hash()[:n_bytes]
+    def digest(self):
+        return self._hash()[:self.digest_size]
 
-    def hexdigest(self, n_bytes=DEFAULT_DIGEST_LENGTH):
-        return self.digest(n_bytes).hex()
+    def hexdigest(self):
+        return self.digest().hex()
 
 
 def test_blake2s_testvector():
@@ -232,6 +237,18 @@ def test_blake2s_keyed():
     blake = BLAKE2s(data=data, key=key)
 
     blake_std = hashlib.blake2s(data, key=key)
+
+    assert blake.digest() == blake_std.digest()
+
+
+def test_blake2s_truncated():
+    import hashlib
+
+    data = b"Howdy, Partner" * 50
+    key = b"trololo"
+    blake = BLAKE2s(data=data, digest_size=16)
+
+    blake_std = hashlib.blake2s(data, digest_size=16)
 
     assert blake.digest() == blake_std.digest()
 
