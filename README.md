@@ -26,8 +26,11 @@ In order to run implementations and tasks, add the working directory to the PYTH
 # CD into the root directory of this repository
 cd Cry.College
 # Add dir to Python's search path
-export PYTHONPATH=$(pwd)
+export PYTHONPATH="$(pwd)"
 ``` 
+
+This is needed for the Python interpreter to find the CryCollege library.
+In case you don't want to set an environment variable, you can configure [vscode to set the variable](https://code.visualstudio.com/docs/python/environments#_use-of-the-pythonpath-variable).
 
 ## Test Code
 After you have written code, you can test it locally using `pytest`.
