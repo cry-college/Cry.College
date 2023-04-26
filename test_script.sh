@@ -23,7 +23,7 @@ fi
 class_name=${classes[$((class_num-1))]}
 
 # Build the env
-python -m venv crycollege_env
+python3 -m venv crycollege_env
 # Activate the env for the current shell
 source crycollege_env/bin/activate
 # Install pytest
