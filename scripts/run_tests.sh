@@ -8,7 +8,7 @@ if ! [[ "$week" =~ ^[1-8]$ ]]; then
   exit 1
 fi
 echo "Available class names for week $week:"
-classes=( $(ls CryCollege/week$week) )
+classes=( $(ls ../CryCollege/week$week) )
 for i in "${!classes[@]}"; do
   echo "$((i+1))) ${classes[i]}"
 done
@@ -25,11 +25,11 @@ class_name=${classes[$((class_num-1))]}
 # Build the env
 python3 -m venv crycollege_env
 # Activate the env for the current shell
-source crycollege_env/bin/activate
+source ../crycollege_env/bin/activate
 # Install pytest
 pip install pytest
 # Add dir to Python's search path
 export PYTHONPATH=$(pwd)
 
 # Run pytest 
-pytest CryCollege/week$week/$class_name
+pytest ../CryCollege/week$week/$class_name
