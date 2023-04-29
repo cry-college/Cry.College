@@ -8,7 +8,7 @@ Only one package is required as an external dependency. That is `pytest` which i
 
 ## testing 
 
-If you are using Linux then you can use the bash script in the [scripts] folder to test your written code. It automates the process of running tests for the repository. The script will prompt you to enter a week number between 1-8 and displays the available classes for that week. You can then choose a week and a class by entering a corresponding number. To run the test you just go to the scripts directory and run `./run_tests.sh`. 
+If you are using Linux then you can use the bash script in the [scripts](./scripts) folder to test your written code. It automates the process of running tests for the repository. The script will prompt you to enter a week number between 1-8 and displays the available classes for that week. You can then choose a week and a class by entering a corresponding number. To run the test you just go to the scripts directory and run `./run_tests.sh`. 
  
 
 In case you don't want to set an environment variable, you can configure [vscode to set the variable](https://code.visualstudio.com/docs/python/environments#_use-of-the-pythonpath-variable).
