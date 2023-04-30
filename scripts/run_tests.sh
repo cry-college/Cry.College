@@ -26,8 +26,7 @@ class_name=${classes[$((class_num-1))]}
 python3 -m venv crycollege_env
 # Activate the env for the current shell
 source ../crycollege_env/bin/activate
-# Install pytest
-pip install pytest
+
 # Add dir to Python's search path
 export PYTHONPATH=$(pwd)
 
