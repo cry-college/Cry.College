@@ -31,9 +31,7 @@ class XZPoint:
         Since z1 is set to 1, this has to be used in the montgommery latter
         where the x value of the base point is used as x1 in the add step.
         """
-        """
-        TODO
-        """
+        raise NotImplementedError("TODO: Implement me plx")
 
     def _add(self, Q, base):
         """
@@ -46,9 +44,7 @@ class XZPoint:
         :param base: This is the base point, in other words r[1] - r[0], P - Q
         :return: Jacobian point P + Q
         """
-        """
-        TODO
-        """
+        raise NotImplementedError("TODO: Implement me plx")
 
     def copy(self):
         return XZPoint(self.x, self.z)
