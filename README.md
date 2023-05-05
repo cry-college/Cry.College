@@ -36,7 +36,9 @@ In case you don't want to set an environment variable, you can configure [vscode
 After you have written code, you can test it locally using `pytest`.
 To test a file, just run:
 
-```bashpytest CryCollege/week3/weierstrass_curve.py``` 
+```bash
+pytest CryCollege/week3/weierstrass_curve.py
+``` 
 
 ## Build and Test Scripts
 To run scripts, you need to have pytest installed on your system. You can check if you have it installed by running ``pytest --version`` on your command prompt or terminal. 
