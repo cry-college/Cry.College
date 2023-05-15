@@ -69,8 +69,8 @@ class ECDSA:
 @pytest.fixture
 def curve_params():
     # Taken from official test vectors
-    curve = CurveP256[0]
-    generator = CurveP256[1]
+    curve = CurveP256
+    generator = CurveP256.gen
     sk = 0xC9AFA9D845BA75166B5C215767B1D6934E50C3DB36E89B127B8A622B120F6721
     return curve, generator, sk
 
