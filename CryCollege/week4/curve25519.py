@@ -28,7 +28,7 @@ class XZPoint:
     def _double(self):
         """
         Double function used to calculate the x value of 2P.
-        Since z1 is set to 1, this has to be used in the montgommery latter
+        Since z1 is set to 1, this has to be used in the Montgomery latter
         where the x value of the base point is used as x1 in the add step.
         """
         raise NotImplementedError("TODO: Implement me plx")
@@ -37,7 +37,7 @@ class XZPoint:
         """
         Add function used to calculate P + Q.
         This uses the value x1 = x value of base point.
-        This works since we use the montgommery ladder and
+        This works since we use the Montgomery ladder and
         r[1] is always r[0] + base point.
         So, we know that r[1] - r[0] = BASE_POINT, so we can just set x1 = BASE_POINT
         :param Q: Point to add to this point
@@ -56,8 +56,8 @@ class XZPoint:
 
     def scalarmult(self, k):
         """
-        This implements the scalarmultiplication kP.
-        It uses the montgommery ladder to do so.
+        This implements the scalar multiplication kP.
+        It uses the Montgomery ladder to do so.
         https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Montgomery_ladder
         We go through all bits of the multiplier k,
         if the current bit is 0:
